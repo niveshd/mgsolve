@@ -1,0 +1,34 @@
+Run the program using following command. 3 represents No of levels. 10 is no. of v cycle iterations
+
+	./mgsolve 3 10
+
+compile the program like this. All the necessary object files are automatically compiled. Read Makefile
+	
+	make
+
+Every time program is run, appropriate data is appended to solution.txt, step_size_vs_error.txt, step_size_vs_time.txt
+
+	./mgsolve 3 10
+	./mgsolve 4 10
+	./mgsolve 5 10
+
+solution.txt has data in the following format. Note that the current solution.txt contains the data as per the graph in pdf, once you re-run the mgsolve, this solution.txt would be deleted and a new version with latest values will be created.
+
+	(x coordinate) (y coordinate) (function value)
+
+step_size_vs_error.txt has data in the following format
+
+	(step_size) (error)
+
+step_size_vs_time.txt has data in the following format
+
+	(step_size) (time)
+	
+For ploting the 2-D graph using GNUplot, use the following command:
+		gnuplot
+		set grid3d 65, 65 // (65 is based on number of levels (2^n + 1), this command has been written for n = 6)
+		set hidden3d
+		splot "solution.txt" u 1:2:3 w lines
+
+otherwise, use the following command
+		plot "filename.txt" u 1:2 w lines
